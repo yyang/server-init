@@ -507,9 +507,9 @@ fi
 sshd_config_file=/etc/ssh/sshd_config
 
 # attempt to modify in situ first.
-sed -i.bak -r -e "s/^\s*#*\s*PermitRootLogin [a-z]*/PermitRootLogin no/" \
+sed -i.bak -r -e "s/^\s*#*\s*PermitRootLogin [a-z\-]*/PermitRootLogin no/" \
               -e "0,/PermitRootLogin no/! s/PermitRootLogin no/#deleted/" \
-              -e "s/^\s*#*\s*PasswordAuthentication [a-z]*/PasswordAuthentication no/" \
+              -e "s/^\s*#*\s*PasswordAuthentication [a-z\-]*/PasswordAuthentication no/" \
               -e "0,/PasswordAuthentication no/! s/PasswordAuthentication no/#deleted/" \
               -e "/^#deleted/ D" $sshd_config_file
 
